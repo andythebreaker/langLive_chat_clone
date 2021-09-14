@@ -1,19 +1,22 @@
 {
-  "name": "llc",
-  "productName": "llc",
-  "version": "0.0.1",
-  "author": "andythebreaker <pokibear03@gmail.com>",
-  "description": "puppeteer",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/andythebreaker/langLive_chat_clone.git"
-  },
-  "scripts": {
-    "start": "node llc.js"
-  },
-  "dependencies": {
-    "puppeteer": "~10.2.0"
-  },
-  "devDependencies": {}
+    "name": "llc",
+    "productName": "llc",
+    "version": "0.0.1",
+    "author": "andythebreaker <pokibear03@gmail.com>",
+    "description": "puppeteer",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andythebreaker/langLive_chat_clone.git"
+    },
+    "scripts": {
+        "server": "node llc.js"
+    },
+    "dependencies": {
+        "puppeteer": "~10.2.0",
+        "yargs": "~17.1.1",
+        "lowdb": "~3.0.0",
+        "uuid": "~8.3.2"
+    },
+    "devDependencies": {}
 }

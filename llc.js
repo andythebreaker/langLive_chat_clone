@@ -1,8 +1,28 @@
-const puppeteer = require('puppeteer');
+//============NPM============
 
+//chrome
+const puppeteer = require('puppeteer'); //if no '"type": "module"' in package.json
+//import { puppeteer } from 'puppeteer'
+
+//argc
+const yargs = require('yargs/yargs') //if no '"type": "module"' in package.json
+//import { yargs } from 'yargs/yargs'
+const { hideBin } = require('yargs/helpers') //if no '"type": "module"' in package.json
+//import { hideBin } from 'yargs/helpers'
+const argv = yargs(hideBin(process.argv)).argv
+//argv
+
+//==========END NPM==========
+
+//global variables
 var tmp_chat_list = [];
 var bool_continue = true;
 
+if(argv.room){
+    console.log(argv.room);
+}
+
+/*main
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -39,3 +59,4 @@ var bool_continue = true;
     }
 
 })();
+*/
