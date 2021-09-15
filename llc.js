@@ -16,19 +16,22 @@ var data_main = require('./models/data_main.js');
 //global variables
 var tmp_chat_list = [];
 var bool_continue = true;
+var output_srt_dir = "./outputsrt";
+var roomIDinput = "369520";
 
 if (argv.room) {
-    console.log(argv.room);
+    roomIDinput = String(argv.room);
 }
+console.log('roomID=' + roomIDinput);
+
 
 data_main.dbInit();
-data_main.addNewChatCell();
 
-/*main
+//main
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('https://www.lang.live/room/3795137');
+    await page.goto(`https://www.lang.live/room/${roomIDinput}`);
     while (bool_continue) {
         try {
             var bool_continue_array = await page.$$eval("p[color='#FFFFFF']", els_if_finish => els_if_finish.map(el_if_finish => el_if_finish.textContent));
@@ -47,18 +50,19 @@ data_main.addNewChatCell();
                     var chat_cell = targets[targetTEXT];
                     if (!tmp_chat_list.includes(chat_cell)) {
                         console.log(chat_cell);
+                        data_main.addNewChatCell(chat_cell);
                     }
                 }
                 tmp_chat_list = targets;
-            }else{
+            } else {
+                data_main.exportSRT(output_srt_dir);
                 await browser.close();
             }
         } catch (error) {//kill app
             console.log(error);
-            bool_continue=false;
+            bool_continue = false;
             await browser.close();
         }
     }
 
 })();
-*/
