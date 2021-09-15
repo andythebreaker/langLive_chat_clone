@@ -1,12 +1,11 @@
 {
-  "activeBoard": "default",
-  "boards": [
+  "chat_history": [
     {
-      "test": "123"
-    },
-    {
-      "test": "321",
-      "id": "18c66716-1b29-4b92-a4f9-219e862029c6"
+      "timestamp": 1631669099500,
+      "userLV": -2,
+      "username": "@llc@",
+      "chatText": "addNewChatCell",
+      "id": "2f420017-a028-4ee7-8320-19db5083e4f7"
     }
   ]
 }

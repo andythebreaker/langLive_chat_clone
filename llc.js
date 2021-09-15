@@ -21,7 +21,8 @@ if (argv.room) {
     console.log(argv.room);
 }
 
-data_main.addNewBoard();
+data_main.dbInit();
+data_main.addNewChatCell();
 
 /*main
 (async () => {

@@ -1,24 +1,40 @@
 const { db } = require("./../persistence");
 
-function defaultBoard() {
+function defaultChatCell() {
     return {
-        "test": "123"
+        "timestamp": Date.now(),
+        "userLV": -1,
+        "username": "@llc@",
+        "chatText": "start_history"
     };
 }
 
 db.defaults({
-    activeBoard: "default",
-    boards: [defaultBoard()]
+    roomID: "12345",
+    chat_history: [defaultChatCell()]
 }).write();
 
-module.exports.addNewBoard = function () {
-    const boards = db.get("boards");
+module.exports.addNewChatCell = function () {
+    const chatCells = db.get("chat_history");
 
-    const res = boards
+    const res = chatCells
         .insert({
-            "test": "321"
+            "timestamp": Date.now(),
+            "userLV": -2,
+            "username": "@llc@",
+            "chatText": "addNewChatCell"
         })
         .write();
 
     return res;
+};
+
+module.exports.dbInit = function (roomID) {
+    db.set("roomID", roomID)
+    .write();
+
+    db.set("chat_history", [])
+    .write();
+
+    return true;
 };
