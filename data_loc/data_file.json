@@ -1,0 +1,12 @@
+{
+  "activeBoard": "default",
+  "boards": [
+    {
+      "test": "123"
+    },
+    {
+      "test": "321",
+      "id": "18c66716-1b29-4b92-a4f9-219e862029c6"
+    }
+  ]
+}

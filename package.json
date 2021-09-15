@@ -5,7 +5,7 @@
     "author": "andythebreaker <pokibear03@gmail.com>",
     "description": "puppeteer",
     "license": "MIT",
-    "type": "module",
+    "type": "commonjs",
     "repository": {
         "type": "git",
         "url": "https://github.com/andythebreaker/langLive_chat_clone.git"
@@ -16,8 +16,8 @@
     "dependencies": {
         "puppeteer": "~10.2.0",
         "yargs": "~17.1.1",
-        "lowdb": "~3.0.0",
-        "uuid": "~8.3.2",
+        "lodash-id": "^0.14.1",
+        "lowdb": "~1.0.0",
         "random-js": "~2.1.0"
     },
     "devDependencies": {}
