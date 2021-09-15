@@ -1,26 +1,30 @@
 //============NPM============
 
 //chrome
-const puppeteer = require('puppeteer'); //if no '"type": "module"' in package.json
-//import { puppeteer } from 'puppeteer'
+//const puppeteer = require('puppeteer'); //if no '"type": "module"' in package.json
+import { puppeteer } from 'puppeteer'
 
 //argc
-const yargs = require('yargs/yargs') //if no '"type": "module"' in package.json
-//import { yargs } from 'yargs/yargs'
-const { hideBin } = require('yargs/helpers') //if no '"type": "module"' in package.json
-//import { hideBin } from 'yargs/helpers'
-const argv = yargs(hideBin(process.argv)).argv
+//const yargs = require('yargs/yargs'); //if no '"type": "module"' in package.json
+import { yargs } from 'yargs/yargs'
+//const { hideBin } = require('yargs/helpers'); //if no '"type": "module"' in package.json
+import { hideBin } from 'yargs/helpers'
+const argv = yargs(hideBin(process.argv)).argv;
 //argv
 
 //==========END NPM==========
+
+const { data_main } = require('./models/data_main.js');
 
 //global variables
 var tmp_chat_list = [];
 var bool_continue = true;
 
-if(argv.room){
+if (argv.room) {
     console.log(argv.room);
 }
+
+data_main.test();
 
 /*main
 (async () => {
