@@ -19,9 +19,12 @@ db.defaults({
 
 module.exports.addNewChatCell = function (chatText) {
     const chatCells = db.get("chat_history");
+    const chatCells_array = db.get("chat_history")
+        .cloneDeep()
+        .value();
     var srtTimestamp = 0;
-    if (chatCells.length > 0) {//TODO:這是一個db物件，不是array屬性，下同，要修正
-        srtTimestamp = Date.now() - chatCells[0].timestamp;
+    if (chatCells_array.length > 0) {
+        srtTimestamp = Date.now() - chatCells_array[0].timestamp;
     }
     const res = chatCells
         .insert({
@@ -38,7 +41,7 @@ module.exports.addNewChatCell = function (chatText) {
 
 module.exports.dbInit = function (roomID) {
     db.set("roomID", roomID)
-        .write();
+        .write();//TODO:why this wont work???
 
     db.set("chat_history", [])
         .write();
@@ -55,7 +58,7 @@ module.exports.exportSRT = function (fileDir) {
         list.push({
             type: 'cue',
             data: {
-                start: chatCells[chatCell].srtTimestamp,
+                start: chatCells[chatCell].srtTimestamp,//TODO:這是一個db物件，不是array屬性，下同，要修正
                 end: (chatCell + 1 >= chatCells.length) ? chatCells[chatCell] + 1 : chatCells[chatCell + 1].srtTimestamp,
                 text: chatCells[chatCell].chatText
             }
