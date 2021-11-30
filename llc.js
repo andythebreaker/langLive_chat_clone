@@ -11,7 +11,7 @@ var bool_continue = true;
     );
     const page = await browser.newPage();
     async function main_load_loop() {
-        await page.goto('https://www.lang.live/room/3686711');
+        await page.goto('https://www.lang.live/room/3650741');
         var err404a = await page.$$eval("h1", err404 => err404.map(err404e => err404e.textContent));
         if (err404a.includes("404")) {
             console.log("Reloading due to an error on the live broadcast platform...");
