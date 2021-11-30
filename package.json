@@ -10,16 +10,20 @@
         "type": "git",
         "url": "https://github.com/andythebreaker/langLive_chat_clone.git"
     },
+    "main": "main.js",
     "scripts": {
-        "server": "node llc.js"
+        "server": "node llc.js",
+        "test": "electron ."
     },
     "dependencies": {
-        "puppeteer": "~10.2.0",
+        "puppeteer": "~12.0.1",
         "yargs": "~17.1.1",
         "lodash-id": "^0.14.1",
         "lowdb": "~1.0.0",
         "random-js": "~2.1.0",
         "subtitle": "~4.1.1"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "electron": "^16.0.2"
+      }
 }
