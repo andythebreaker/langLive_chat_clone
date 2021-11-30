@@ -14,7 +14,7 @@
         "server": "node llc.js"
     },
     "dependencies": {
-        "puppeteer": "~10.2.0",
+        "puppeteer": "~12.2.0",
         "yargs": "~17.1.1",
         "lodash-id": "^0.14.1",
         "lowdb": "~1.0.0",
