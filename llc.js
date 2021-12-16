@@ -55,7 +55,9 @@ data_main.dbInit();
 (async () => {
     const browser = await puppeteer.launch(
         {
-            //headless: false
+            ignoreDefaultArgs: ["--enable-automation"],
+            /*headless: false,*/
+            executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
         }
     );
     const page = await browser.newPage();
@@ -94,6 +96,7 @@ data_main.dbInit();
                         tmp_chat_list = targets;
                     } else {
                         data_main.exportSRT(output_srt_dir);
+                        await recorder.stop();
                         await browser.close();
                     }
                 } catch (error) {//kill app
