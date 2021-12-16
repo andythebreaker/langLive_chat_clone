@@ -1,0 +1,1 @@
+due to lang live offical website front end bug , 404 occurs when you did not log in , we do fource f5 to overcome this promblem
