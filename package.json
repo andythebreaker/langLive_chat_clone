@@ -13,20 +13,23 @@
     "main": "main.js",
     "scripts": {
         "server": "node llc.js",
-        "test": "electron ."
+        "test": "electron --trace-warnings .",
+        "dev":"concurrently --kill-others \"node llc.js --room=3800370\" \"npm test\""
     },
     "dependencies": {
         "@riversun/simple-date-format": "^1.1.6",
-        "logfilename": "^0.3.0",
-        "puppeteer": "~12.0.1",
-        "yargs": "~17.1.1",
+        "child_process": "*",
         "lodash-id": "^0.14.1",
+        "logfilename": "^0.3.0",
         "lowdb": "~1.0.0",
+        "puppeteer": "~12.0.1",
+        "puppeteer-screen-recorder": "^2.0.2",
         "random-js": "~2.1.0",
         "subtitle": "~4.1.1",
-        "puppeteer-screen-recorder": "^2.0.2"
+        "yargs": "~17.1.1"
     },
     "devDependencies": {
+        "concurrently": "^6.4.0",
         "electron": "^16.0.2"
     }
 }

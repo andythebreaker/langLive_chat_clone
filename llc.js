@@ -40,7 +40,7 @@ var data_main = require('./models/data_main.js');
 var tmp_chat_list = [];
 var bool_continue = true;
 var output_srt_dir = "./outputsrt";
-var roomIDinput = "3619520";
+var roomIDinput = "3650590";
 
 var bool_ui = false;
 var bool_rec = true;
@@ -74,8 +74,8 @@ data_main.dbInit();
     );
     const page = await browser.newPage();
     await page.setViewport({ width: screen_VP.width, height: screen_VP.height });
-    const recorder = new PuppeteerScreenRecorder(page, Config); // Config is optional
-    if(bool_rec)await recorder.start(SavePath);
+    const recorder = (bool_rec) ? new PuppeteerScreenRecorder(page, Config) : null; // Config is optional
+    if (bool_rec) await recorder.start(SavePath);
 
     async function main_load_loop() {
         await page.goto(`https://www.lang.live/room/${roomIDinput}`);
@@ -102,19 +102,20 @@ data_main.dbInit();
                             var chat_cell = targets[targetTEXT];
                             if (!tmp_chat_list.includes(chat_cell)) {
                                 console.log(chat_cell);
+                                data_main.event.emit('some_event');
                                 data_main.addNewChatCell(chat_cell);
                             }
                         }
                         tmp_chat_list = targets;
                     } else {
                         data_main.exportSRT(output_srt_dir);
-                        if(bool_rec)await recorder.stop();
+                        if (bool_rec) await recorder.stop();
                         await browser.close();
                     }
                 } catch (error) {//kill app
                     console.log(error);
                     bool_continue = false;
-                    if(bool_rec)await recorder.stop();
+                    if (bool_rec) await recorder.stop();
 
                     await browser.close();
                 }

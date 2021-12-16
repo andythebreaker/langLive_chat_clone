@@ -1,6 +1,13 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserView, BrowserWindow } = require('electron')
 const path = require('path')
+
+var data_main = require('./models/data_main.js');
+//require('llc.js');
+
+data_main.event.on('some_event', function() {
+    console.log('some_event 事件觸發');
+});
 
 function createWindow() {
   // Create the browser window.
@@ -13,10 +20,14 @@ function createWindow() {
     }
   })
 
+  const view = new BrowserView();
+  mainWindow.setBrowserView(view);
+  view.setBounds({ x: 0, y: 0, width: 300, height: 300 });
+
   // and load the index.html of the app.
   //mainWindow.loadURL('data:text/html;charset=utf-8,<html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>Hello world from Lyon, FR</body></html>');
   setInterval(function () {
-    mainWindow.loadURL(`data:text/html;charset=utf-8,<html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>Hello world from Lyon, ${Date.now()}</body></html>`);
+    view.webContents.loadURL(`data:text/html;charset=utf-8,<html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>Hello world from Lyon, ${Date.now()}</body></html>`);
   }, 300);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
