@@ -23,7 +23,8 @@
         "lodash-id": "^0.14.1",
         "lowdb": "~1.0.0",
         "random-js": "~2.1.0",
-        "subtitle": "~4.1.1"
+        "subtitle": "~4.1.1",
+        "puppeteer-screen-recorder": "^2.0.2"
     },
     "devDependencies": {
         "electron": "^16.0.2"

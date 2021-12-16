@@ -22,7 +22,7 @@ const Config = {
     },
     aspectRatio: '16:9',
 };
-const SavePath = './' + sdf.formatWith("'screenREC'yyyy_MM_dd'T'HH_mm_ss_SSS'.mp4'", new Date(Date.now()));
+const SavePath = './mp4video/' + sdf.formatWith("'screenREC'yyyy_MM_dd'T'HH_mm_ss_SSS'.mp4'", new Date(Date.now()));
 
 
 //argc
