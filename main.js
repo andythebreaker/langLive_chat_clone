@@ -1,8 +1,8 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     alwaysOnTop: true,
@@ -15,9 +15,9 @@ function createWindow () {
 
   // and load the index.html of the app.
   //mainWindow.loadURL('data:text/html;charset=utf-8,<html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>Hello world from Lyon, FR</body></html>');
-  setInterval(function(){ 
+  setInterval(function () {
     mainWindow.loadURL(`data:text/html;charset=utf-8,<html><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>Hello world from Lyon, ${Date.now()}</body></html>`);
-}, 300);
+  }, 300);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }

@@ -42,8 +42,18 @@ var bool_continue = true;
 var output_srt_dir = "./outputsrt";
 var roomIDinput = "3619520";
 
+var bool_ui = false;
+var bool_rec = true;
+
+
 if (argv.room) {
     roomIDinput = String(argv.room);
+}
+if (argv.ui) {
+    bool_ui = (String(argv.ui).toLowerCase === 'true') ? true : false;
+}
+if (argv.rec) {
+    bool_rec = (String(argv.rec).toLowerCase === 'false') ? false : true;
 }
 console.log('roomID=' + roomIDinput);
 
@@ -53,17 +63,19 @@ data_main.dbInit();
 //main
 
 (async () => {
-    const browser = await puppeteer.launch(
+    const browser = await puppeteer.launch((bool_rec) ?
         {
             ignoreDefaultArgs: ["--enable-automation"],
             /*headless: false,*/
             executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+        } : {
+
         }
     );
     const page = await browser.newPage();
     await page.setViewport({ width: screen_VP.width, height: screen_VP.height });
     const recorder = new PuppeteerScreenRecorder(page, Config); // Config is optional
-    await recorder.start(SavePath);
+    if(bool_rec)await recorder.start(SavePath);
 
     async function main_load_loop() {
         await page.goto(`https://www.lang.live/room/${roomIDinput}`);
@@ -96,13 +108,13 @@ data_main.dbInit();
                         tmp_chat_list = targets;
                     } else {
                         data_main.exportSRT(output_srt_dir);
-                        await recorder.stop();
+                        if(bool_rec)await recorder.stop();
                         await browser.close();
                     }
                 } catch (error) {//kill app
                     console.log(error);
                     bool_continue = false;
-                    await recorder.stop();
+                    if(bool_rec)await recorder.stop();
 
                     await browser.close();
                 }
