@@ -1,0 +1,16 @@
+{
+  "name": "lang-live-rec",
+  "version": "0.1.1",
+  "description": "",
+  "main": "index.js",
+  "bin": "./bin.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "terminal-kit": "*"
+  }
+}
